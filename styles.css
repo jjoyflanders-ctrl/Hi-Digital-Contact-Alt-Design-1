@@ -125,8 +125,8 @@ a{ color: inherit; }
   top: 51.21%;
   transform: translate(-50%, -50%);
 
-  width: clamp(420px, 40vw, 540px);
-  height: clamp(420px, 40vw, 540px);
+  width: clamp(340px, 32vw, 420px);
+  height: clamp(340px, 32vw, 420px);
 
   border-radius: 50%;
   overflow: hidden;
