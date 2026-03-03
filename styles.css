@@ -125,8 +125,8 @@ a{ color: inherit; }
   top: 51.21%;
   transform: translate(-50%, -50%);
 
-  width: clamp(340px, 32vw, 420px);
-  height: clamp(340px, 32vw, 420px);
+  width: clamp(380px, 34vw, 470px);
+  height: clamp(380px, 34vw, 470px);
 
   border-radius: 50%;
   overflow: hidden;
@@ -139,7 +139,6 @@ a{ color: inherit; }
   height: 100%;
   object-fit: cover;
   object-position: 55% 35%
-  transform: scale(1.05);
   display: block;
 }
 .desk-info{
