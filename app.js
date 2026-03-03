@@ -12,7 +12,6 @@ const CSV_URL = "./employees.csv";
 const $ = (sel) => document.querySelector(sel);
 
 function toast(msg){
-  // super-light toast (non-blocking)
   const t = document.createElement("div");
   t.textContent = msg;
   t.style.position = "fixed";
@@ -45,11 +44,9 @@ function buildPhoneDisplay(phone, ext){
   return ext ? `${clean} ext ${ext}` : clean;
 }
 
-function buildTelHref(phone, ext){
+function buildTelHref(phone){
   if (!phone) return "#";
-  // keep digits and +
   const digits = phone.replace(/[^0-9+]/g,"");
-  // NOTE: extensions in tel: aren't universally supported; keep it simple
   return `tel:${digits}`;
 }
 
@@ -59,7 +56,6 @@ function buildMailHref(email){
 }
 
 function qrImgUrl(text){
-  // QuickChart QR: simple and reliable
   return `https://quickchart.io/qr?text=${encodeURIComponent(text)}&size=220`;
 }
 
@@ -75,7 +71,7 @@ function parseCsv(text){
     const next = text[i+1];
 
     if (ch === '"' ){
-      if (inQuotes && next === '"'){ // escaped quote
+      if (inQuotes && next === '"'){
         cur += '"';
         i++;
       } else {
@@ -94,9 +90,7 @@ function parseCsv(text){
       if (ch === "\r" && next === "\n"){ i++; }
       row.push(cur);
       cur = "";
-      if (row.some(cell => cell.length > 0)){
-        rows.push(row);
-      }
+      if (row.some(cell => cell.length > 0)) rows.push(row);
       row = [];
       continue;
     }
@@ -104,11 +98,11 @@ function parseCsv(text){
     cur += ch;
   }
 
-  // last cell
   row.push(cur);
   if (row.some(cell => cell.length > 0)) rows.push(row);
 
   if (!rows.length) return [];
+
   const header = rows[0].map(h => normalize(h));
   return rows.slice(1).map(cols => {
     const obj = {};
@@ -171,7 +165,6 @@ function findEmployee(query){
 function photoSrc(emp){
   const p = (emp.photo || "").trim();
   if (!p) return DEFAULT_PHOTO;
-  // allow either full URL or relative asset path
   if (/^https?:\/\//i.test(p)) return p;
   return `./assets/${encodeURIComponent(p)}`;
 }
@@ -182,7 +175,7 @@ function renderEmployee(emp){
   const full = `${emp.first || ""} ${emp.last || ""}`.trim() || "Employee";
   const title = emp.title || "";
   const phoneDisp = buildPhoneDisplay(emp.phone, emp.phone_ext);
-  const telHref = buildTelHref(emp.phone, emp.phone_ext);
+  const telHref = buildTelHref(emp.phone);
   const email = emp.email || "";
 
   // desktop
@@ -206,8 +199,7 @@ function renderEmployee(emp){
   if (els.mobName) els.mobName.textContent = full;
   if (els.mobTitle) els.mobTitle.textContent = title;
 
-  const qr = qrImgUrl(SHOPIFY_URL);
-  if (els.mobQr) els.mobQr.src = qr;
+  if (els.mobQr) els.mobQr.src = qrImgUrl(SHOPIFY_URL);
 
   if (els.mobCall) els.mobCall.href = telHref;
   if (els.mobEmail) els.mobEmail.href = buildMailHref(email);
@@ -280,13 +272,14 @@ async function nativeShare(emp){
         url: SHOPIFY_URL
       });
       return true;
-    }catch(err){
-      return false;
+    }catch{
+      return false; // user cancel is fine
     }
   }
   return false;
 }
 
+// ---- Modal helpers ----
 function openModal(title, innerHtml){
   els.modalTitle.textContent = title;
   els.modalBody.innerHTML = innerHtml;
@@ -302,6 +295,7 @@ function closeModal(){
 function openShareModal(emp){
   const full = `${emp.first||""} ${emp.last||""}`.trim() || "Highlight Industries";
 
+  // ✅ QR is visible immediately (first view)
   const html = `
     <div class="card">
       <div class="share-grid">
@@ -310,14 +304,14 @@ function openShareModal(emp){
         </div>
         <div class="share-actions">
           <div style="font-weight:900; font-size:18px;">${escapeHtml(full)}</div>
-          
+
           <div class="list">
             <button class="btn btn--solid" type="button" data-action="nativeShare">Share (AirDrop / Text / Email)</button>
             <button class="btn" type="button" data-action="copyLink">Copy Shopify Link</button>
             <button class="btn" type="button" data-action="downloadVcard">Download Contact (.vcf)</button>
           </div>
 
-          <div class="small">If Share isn't available, Copy Link works everywhere.</div>
+          <div class="small">Tip: Scan the QR for quick sharing. Use Share to send the link.</div>
         </div>
       </div>
     </div>
@@ -329,12 +323,12 @@ function openShareModal(emp){
     const ok = await nativeShare(emp);
     if (!ok) toast("Share not available here — try Copy Link.");
   });
+
   els.modalBody.querySelector('[data-action="copyLink"]')?.addEventListener("click", async ()=>{
     try{
       await navigator.clipboard.writeText(SHOPIFY_URL);
       toast("Copied!");
     }catch{
-      // fallback
       const inp = document.createElement("input");
       inp.value = SHOPIFY_URL;
       document.body.appendChild(inp);
@@ -344,6 +338,7 @@ function openShareModal(emp){
       toast("Copied!");
     }
   });
+
   els.modalBody.querySelector('[data-action="downloadVcard"]')?.addEventListener("click", ()=>{
     downloadVCard(emp);
   });
@@ -377,6 +372,7 @@ function openDirectoryModal(){
       </div>
     </div>
   `;
+
   openModal("Employees", html);
 
   const dirSearch = $("#dirSearch");
@@ -423,10 +419,10 @@ function wireUI(){
     downloadVCard(current);
   });
 
-  els.deskShareHit?.addEventListener("click", async ()=>{
+  // ✅ IMPORTANT: Share opens QR modal immediately (no native share first)
+  els.deskShareHit?.addEventListener("click", ()=>{
     if (!current) return;
-    const ok = await nativeShare(current);
-    if (!ok) openShareModal(current);
+    openShareModal(current);
   });
 
   // Desktop open
@@ -450,18 +446,17 @@ function wireUI(){
     downloadVCard(current);
   });
 
-  els.shareBtn?.addEventListener("click", async ()=>{
+  // ✅ Share opens QR modal immediately
+  els.shareBtn?.addEventListener("click", ()=>{
     if (!current) return;
-    // prefer native share on mobile-capable browsers even on desktop
-    const ok = await nativeShare(current);
-    if (!ok) openShareModal(current);
+    openShareModal(current);
   });
 
   // Mobile bottom bar
-  els.mobShareBtn?.addEventListener("click", async ()=>{
+  // ✅ Share opens QR modal immediately
+  els.mobShareBtn?.addEventListener("click", ()=>{
     if (!current) return;
-    const ok = await nativeShare(current);
-    if (!ok) openShareModal(current);
+    openShareModal(current);
   });
 
   els.mobDirectoryBtn?.addEventListener("click", ()=>{
@@ -488,7 +483,6 @@ function wireUI(){
 // ---- Load CSV and start ----
 async function init(){
   try{
-    // cache-bust so Shopify/GitHub doesn't hang on old CSV
     const res = await fetch(`${CSV_URL}?v=${Date.now()}`, { cache: "no-store" });
     if (!res.ok) throw new Error(`CSV load failed: ${res.status}`);
     const txt = await res.text();
