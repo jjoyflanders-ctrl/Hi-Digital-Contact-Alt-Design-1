@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HI | Connect</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<main class="app">
+
+  <!-- DESKTOP -->
+  <section class="desk" aria-label="Desktop business card">
+    <div class="stage desk-stage">
+      <img src="assets/desktop-template.svg" class="template" alt="" aria-hidden="true"/>
+
+      <div class="desk-photoOverlay">
+        <img id="deskPhoto" alt="Employee photo">
+      </div>
+
+      <div class="desk-name" id="deskName">Loading…</div>
+      <div class="desk-title" id="deskTitle"></div>
+
+      <a class="desk-line desk-line--phone" id="deskPhone" href="#" aria-label="Call">—</a>
+      <a class="desk-line desk-line--email" id="deskEmail" href="#" aria-label="Email">—</a>
+      <a class="desk-line desk-line--web" id="deskWeb" href="#" target="_blank" rel="noopener" aria-label="Website">—</a>
+
+      <!-- Hot zones over SVG controls -->
+      <button class="hot hot--desk-search" id="deskSearchBtn" type="button" aria-label="Search"></button>
+      <button class="hot hot--desk-vcard" id="deskVcardBtn" type="button" aria-label="Save to Contacts"></button>
+      <button class="hot hot--desk-share" id="deskShareBtn" type="button" aria-label="Send to Phone"></button>
+    </div>
+  </section>
+
+  <!-- MOBILE -->
+  <section class="mobi" aria-label="Mobile business card">
+    <div class="stage mobi-stage">
+      <img src="assets/mobile-template.svg" class="template" alt="" aria-hidden="true"/>
+
+      <!-- QR circle overlay -->
+      <div class="mobi-qrOverlay" aria-label="QR code">
+        <img id="mobiQR" alt="QR code for this contact" />
+      </div>
+
+      <div class="mobi-name" id="mobiName">Loading…</div>
+      <div class="mobi-title" id="mobiTitle"></div>
+
+      <!-- hot zones for call/email/web icons on the green bar -->
+      <a class="hot hot--mobi-call" id="mobiCall" href="#" aria-label="Call"></a>
+      <a class="hot hot--mobi-email" id="mobiEmail" href="#" aria-label="Email"></a>
+      <a class="hot hot--mobi-web" id="mobiWeb" href="#" aria-label="Website"></a>
+
+      <!-- floating bottom bar -->
+      <div class="floatBar" role="toolbar" aria-label="Share, search, and add to contacts">
+        <button class="floatIcon" id="mobiShareBtn" type="button" aria-label="Share">
+          <span class="ico" aria-hidden="true" data-ico="share"></span>
+        </button>
+        <button class="floatIcon" id="mobiSearchBtn" type="button" aria-label="Search employees">
+          <span class="ico" aria-hidden="true" data-ico="search"></span>
+        </button>
+        <button class="floatCTA" id="mobiVcardBtn" type="button" aria-label="Add to contacts">
+          <span>Add to<br/>Contacts</span>
+          <span class="plus" aria-hidden="true">+</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Backdrop for modals -->
+  <div class="backdrop" id="modalBackdrop" hidden></div>
+
+  <!-- Search modal -->
+  <dialog class="modal" id="searchModal" aria-label="Search employees">
+    <div class="modalHead">
+      <div class="modalTitle">Find an employee</div>
+      <button class="xBtn" id="closeSearch" type="button" aria-label="Close">×</button>
+    </div>
+    <div class="modalBody">
+      <input id="searchInput" class="searchInput" type="search" placeholder="Type a name…" autocomplete="off" />
+      <div id="searchResults" class="results"></div>
+    </div>
+  </dialog>
+
+  <!-- QR modal (desktop send to phone) -->
+  <dialog class="modal" id="qrModal" aria-label="Send to phone">
+    <div class="modalHead">
+      <div class="modalTitle">Send to Phone</div>
+      <button class="xBtn" id="closeQR" type="button" aria-label="Close">×</button>
+    </div>
+    <div class="modalBody qrBody">
+      <div class="qrBigWrap">
+        <img id="deskQR" alt="QR code for sharing" />
+      </div>
+      <div class="qrMeta">
+        <div class="qrUrl" id="shareUrlText"></div>
+        <div class="qrBtns">
+          <button class="miniBtn" id="copyLinkBtn" type="button">Copy link</button>
+          <button class="miniBtn" id="nativeShareBtn" type="button">Share…</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+</main>
+
+<script src="app.js" defer></script>
+</body>
+</html>
