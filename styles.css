@@ -608,7 +608,7 @@ a{ color: inherit; }
   .modal{ z-index: 5000 !important; }
   .modal__backdrop{ z-index: 5001 !important; }
   .modal__panel{ z-index: 5002 !important; }
-}
+
 /* ===== MOBILE: force portrait to top of mockup ===== */
 @media (max-width: 899px){
   .view--mobile .mob-mock{ position: relative !important; }
@@ -626,3 +626,4 @@ a{ color: inherit; }
     z-index: 70 !important;
   }
 }
+
