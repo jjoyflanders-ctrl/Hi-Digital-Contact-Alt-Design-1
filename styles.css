@@ -293,12 +293,12 @@ a{ color: inherit; }
 .mob-portrait{
   position:absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -45%);
-  width: 152px;
-  height: 152px;
+  top: 120px;
+  transform: translateX(-50%)
+  width: 120px;
+  height: 120px;
   /* square photo so it doesn’t compete with the circle motif */
-  border-radius: 18px;
+  border-radius: 16px;
   overflow:hidden;
   background: rgba(255,255,255,.10);
   border: 0;
@@ -588,4 +588,7 @@ a{ color: inherit; }
   height:88%;
   object-fit:contain;
   display:block;
+}
+.mob-main{
+  margin-top:-40px;
 }
