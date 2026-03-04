@@ -821,20 +821,22 @@ a{ color: inherit; }
   object-fit: contain !important;
   display:block !important;
 }
-/* ===== FINAL MOBILE: CLEAN + STABLE (replace the whole tail section with this) ===== */
-
-/* Keep the spacing that creates room for the mockup top */
+/* ===== MOBILE: FINAL (clean, no nesting) ===== */
 @media (max-width: 899px){
+
+  /* spacing that creates room for the top mockup area */
   .mob-main{
     padding-top: 330px !important;  /* adjust 300–380 */
   }
 
-  /* Let the portrait escape the hero (hero has overflow:hidden above) */
+  /* remove the see-thru overlay box */
   .view--mobile .mob-hero{
     overflow: visible !important;
+    background: none !important;
+    box-shadow: none !important;
   }
 
-  /* Employee photo (keep as you have it now) */
+  /* employee photo: top-center on mockup */
   .view--mobile .mob-portrait{
     left: 50% !important;
     right: auto !important;
@@ -842,14 +844,14 @@ a{ color: inherit; }
 
     width: 170px !important;
     height: 170px !important;
-    top: 55px !important;
+    top: 30px !important;     /* tweak 20–45 */
 
-    z-index: 80 !important; /* above QR */
+    z-index: 80 !important;   /* above QR, below modal */
   }
 
-  /* Employee info: SOLID + readable (kills see-thru/ghost edge) */
+  /* employee info: solid + readable */
   .view--mobile .mob-details{
-    margin-top: 70px !important; /* move up/down: 55–90 */
+    margin-top: 85px !important; /* tweak 80–95 */
 
     background: rgba(255,255,255,.92) !important;
     border: 1px solid rgba(0,0,0,.10) !important;
@@ -875,24 +877,9 @@ a{ color: inherit; }
   .view--mobile .mob-details .mob-v a{
     color: rgba(0,0,0,.85) !important;
   }
-  /* ===== MOBILE: final tune (paste LAST) ===== */
-@media (max-width: 899px){
 
-  /* 1) Kill the see-thru overlay box (it’s the hero background) */
-  .view--mobile .mob-hero{
-    background: none !important;
-    box-shadow: none !important;
-  }
-
-  /* 2) Put the employee photo back where you liked it */
-  .view--mobile .mob-portrait{
-    top: 35px !important;      /* higher than 55; tweak 25–45 */
-    z-index: 80 !important;
-  }
-
-  /* 3) Drop the employee data DOWN a smidge (bigger = lower) */
-  .view--mobile .mob-details{
-    margin-top: 85px !important;  /* was 70; tweak 80–95 */
-  }
-}
+  /* modals above everything (Share / Employees) */
+  .modal{ z-index: 5000 !important; }
+  .modal__backdrop{ z-index: 5001 !important; }
+  .modal__panel{ z-index: 5002 !important; }
 }
