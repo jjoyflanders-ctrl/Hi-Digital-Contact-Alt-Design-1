@@ -851,32 +851,37 @@ a{ color: inherit; }
   .view--mobile .mob-mock .mob-details{
     overflow: hidden !important;
   }
-  /* ===== FINAL MOBILE OVERRIDE (paste at VERY bottom) ===== */
+  /* ===== FINAL MOBILE OVERRIDE (KEEP THIS AS THE ONLY MOBILE OVERRIDE AT THE BOTTOM) ===== */
 @media (max-width: 899px){
 
-  /* 1) IMPORTANT: allow the portrait to sit above the hero area */
+  /* allow portrait to sit above hero */
   .view--mobile .mob-hero{
     overflow: visible !important;
   }
 
-  /* 2) Employee photo: centered, ABOVE the QR, not clipped */
+  /* employee photo: centered + bigger + above QR */
   .view--mobile .mob-portrait{
     left: 50% !important;
     right: auto !important;
     transform: translateX(-50%) !important;
 
-    top: 70px !important;        /* this puts it in the black area */
-    width: 140px !important;
-    height: 140px !important;
+    width: 170px !important;
+    height: 170px !important;
+    top: 55px !important;
 
-    z-index: 80 !important;      /* QR is 50 in your file */
+    z-index: 80 !important; /* above QR */
   }
 
-  /* 3) Push the employee card down so its top edge stops cutting through */
+  /* employee data position */
   .view--mobile .mob-details{
-    margin-top: 110px !important;     /* adjust 90–140 */
-    backdrop-filter: none !important;  /* removes the “ghosty” blur edge */
-    background: rgba(0,0,0,.28) !important;
+    margin-top: 85px !important;
   }
-}
+
+  /* remove the transparent card look */
+  .view--mobile .mob-details{
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
 }
