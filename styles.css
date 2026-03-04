@@ -831,53 +831,24 @@ a{ color: inherit; }
 .mob-details{
   margin-top: 0 !important;
 }
-/* ===== MOBILE: move portrait UP, move employee card DOWN (QR untouched) ===== */
+/* ===== FINAL MOBILE OVERRIDES (ONLY THESE AT VERY BOTTOM) ===== */
 @media (max-width: 899px){
 
-  /* 1) Move employee picture UP (smaller top number = higher) */
-  .mob-portrait{
-    top: 20px !important;   /* was ~105px in your current overrides */
-  }
+  /* keep your existing QR EXACTLY as-is (do not move it) */
+  /* (we are not touching .mob-qrCircle here on purpose) */
 
-  /* 2) Move employee data DOWN (bigger number = lower) */
-  .mob-details{
-    margin-top: 45px !important;
-  }
-
-  /* Optional: if you still need the whole block lower, increase this too */
-  .mob-main{
-    padding-top: 380px !important;  /* try 380; if needed: 400 / 420 */
-  }
-  /* ===== SAFEST MOBILE OVERRIDE (paste at very bottom) ===== */
-@media (max-width: 899px){
-
-  /* employee photo: force centered + on top of the stack */
+  /* employee photo: centered and ABOVE the QR / above the translucent panel */
   .view--mobile .mob-mock .mob-portrait{
-    left: 50% !important;
-    right: auto !important;              /* cancels the rule that pushes it right */
-    transform: translateX(-50%) !important;
-    top: 16px !important;                /* adjust: 8–28 */
-    z-index: 999 !important;             /* above QR and everything */
-  }
-
-}
-}
-/* ===== MOBILE: put employee photo ABOVE the QR (no QR changes) ===== */
-@media (max-width: 899px){
-
-  .view--mobile .mob-portrait{
     left: 50% !important;
     right: auto !important;
     transform: translateX(-50%) !important;
 
-    /* KEY: move it out of the translucent panel region */
-    top: -260px !important;   /* adjust this number */
+    top: -260px !important;      /* adjust: -230 to -320 */
     z-index: 999 !important;
   }
 
-}
-@media (max-width: 899px){
-  .view--mobile .mob-details{
+  /* tame the translucent panel edge */
+  .view--mobile .mob-mock .mob-details{
     overflow: hidden !important;
   }
 }
