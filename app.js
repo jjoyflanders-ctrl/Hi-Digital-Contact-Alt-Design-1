@@ -328,7 +328,7 @@ function openShareModal(emp){
           
           <div class="list">
             <button class="btn btn--solid" type="button" data-action="nativeShare">Share (AirDrop / Text / Email)</button>
-            <button class="btn" type="button" data-action="copyLink">Copy Shopify Link</button>
+            <button class="btn" type="button" data-action="copyLink">Copy Link</button>
             <button class="btn" type="button" data-action="downloadVcard">Download Contact (.vcf)</button>
           </div>
 
