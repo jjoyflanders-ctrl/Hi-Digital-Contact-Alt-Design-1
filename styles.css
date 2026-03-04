@@ -864,4 +864,34 @@ a{ color: inherit; }
     box-shadow: none !important;
     backdrop-filter: none !important;
   }
+  /* ===== MOBILE: make employee info readable + hide see-thru overlay ===== */
+@media (max-width: 899px){
+
+  /* Bring back a solid info panel so text is readable */
+  .view--mobile .mob-details{
+    margin-top: 70px !important;          /* moves the info up a bit */
+    background: rgba(255,255,255,.92) !important;
+    border: 1px solid rgba(0,0,0,.10) !important;
+    box-shadow: 0 18px 45px rgba(0,0,0,.25) !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Make the rows readable on the light panel */
+  .view--mobile .mob-details .mob-row{
+    border-bottom: 1px solid rgba(0,0,0,.08) !important;
+  }
+  .view--mobile .mob-details .mob-k{
+    color: rgba(0,0,0,.55) !important;
+  }
+  .view--mobile .mob-details .mob-v,
+  .view--mobile .mob-details .mob-v a{
+    color: rgba(0,0,0,.85) !important;
+  }
+
+  /* Keep the green name pill looking good */
+  .view--mobile .mob-details .mob-titleblock{
+    background: rgba(31,143,58,.92) !important;
+    border: 0 !important;
+  }
+}
 }
