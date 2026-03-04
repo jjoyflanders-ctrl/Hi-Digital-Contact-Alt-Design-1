@@ -903,5 +903,5 @@ a{ color: inherit; }
     height: 170px !important;
 
     z-index: 120 !important;      /* above QR (50), below modal (5000) */
-  }
+  }.view--mobile .mob-main{ overflow: visible !important; }
 }
