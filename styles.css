@@ -533,338 +533,60 @@ a{ color: inherit; }
 }
 .emp-item:hover{ background: rgba(255,255,255,.10); }
 .emp-sub{ opacity:.78; font-weight: 600; font-size: 13px; margin-top: 3px; }
-/* Mobile QR circle fix */
-.mob-qrCircle{
-  position:absolute;
-  left:22px;
-  top:215px;
-
-  width:110px;
-  height:110px;
-
-  border-radius:50%;
-  overflow:hidden;
-  background:#fff;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-#mobQr{
-  width:88%;
-  height:88%;
-  object-fit:contain;
-  display:block;
-}
-/* MOBILE HERO LAYOUT */
-.mob-hero{
-  position:relative;
-}
-
-/* QR circle */
-.mob-qrCircle{
-  position:absolute;
-  left:24px;
-  top:220px;
-
-  width:110px;
-  height:110px;
-
-  border-radius:50%;
-  overflow:hidden;
-  background:#fff;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-/* QR image */
-#mobQr{
-  width:88%;
-  height:88%;
-  object-fit:contain;
-  display:block;
-}
-.mob-main{
-  margin-top:-40px;
-}
-/* ===== Mobile layout fixes (put at BOTTOM of styles.css) ===== */
-
-
-
-/* make sure hero area has enough vertical room for QR + portrait */
-.mob-hero{
-  position: relative !important;
-  min-height: 360px;          /* adjust up/down if needed */
-  padding-top: 24px;
-}
-
-/* keep QR above everything */
-.mob-qrCircle{
-  position: absolute !important;
-  left: 22px;
-  top: 190px;                 /* adjust if you want it higher/lower */
-  width: 128px;
-  height: 128px;
-  border-radius: 999px;
-  overflow: hidden;
-  background: #fff;
-  border: 6px solid #fff;
-  z-index: 10;
-}
-
-/* ensure the QR image actually renders inside the circle */
-.mob-qrCircle img,
-#mobQr{
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: contain;        /* contain = no cropping */
-}
-
-/* portrait smaller so there’s room */
-.mob-portrait{
-  position: absolute !important;
-  right: 22px;
-  top: 120px;
-  width: 170px;               /* adjust smaller/larger */
-  height: 120px;
-  border-radius: 18px;
-  overflow: hidden;
-  z-index: 6;
-}
-
-.mob-portrait img,
-#mobPhoto{
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-/* IMPORTANT: stop the details card from being absolutely placed too high */
-.mob-details{
-  position: relative !important;
-  top: auto !important;
-  left: auto !important;
-  right: auto !important;
-  transform: none !important;
-
-  margin-top: 120px;          /* pushes the card down BELOW the hero */
-}
-/* --- MOBILE: mockup icon click targets --- */
-.mob-main{ position: relative; }
-
-/* invisible hit areas */
-.mob-hit{
-  position:absolute;
-  z-index: 20;
-  display:block;
-  /* debug tip: uncomment next line to SEE the hitboxes */
-  /* outline: 2px solid red; */
-}
-
-/* Position these over your 3 icons on the green stripe.
-   If they’re slightly off, adjust left/top values a little. */
-.mob-hit--call{
-  left: 52%;
-  top: 312px;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-}
-.mob-hit--email{
-  left: 67%;
-  top: 312px;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-}
-.mob-hit--web{
-  left: 82%;
-  top: 312px;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-}
-
-/* FINAL: employee card position (adjust this number) */
-.mob-details{
-  margin-top: 35px !important; /* try 35, then 15, then 0 if you want it higher */
-}
 /* =========================
-   MOBILE LAYOUT OVERRIDE
-   (This fixes QR, portrait, and employee card position)
+   MOBILE: CLEAN FINAL OVERRIDES
+   (QR stays as-is; portrait pins to mock top; details tuned; modals on top)
+   Paste THIS at the very bottom and REMOVE the old "Mobile QR circle fix" mess.
    ========================= */
-
-.mob-main{
-  padding-top:0 !important;
-}
-
-/* HERO AREA */
-.mob-hero{
-  position:relative !important;
-  min-height:420px !important;
-}
-
-/* QR circle */
-.mob-qrCircle{
-  position:absolute !important;
-  left:26px !important;
-  top:185px !important;
-  width:126px !important;
-  height:126px !important;
-  border-radius:999px !important;
-  overflow:hidden !important;
-  background:#fff !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  z-index:10 !important;
-}
-
-.mob-qrCircle img,
-#mobQr{
-  width:88% !important;
-  height:88% !important;
-  object-fit:contain !important;
-  display:block !important;
-}
-
-/* employee photo */
-.mob-portrait{
-  position:absolute !important;
-  right:26px !important;
-  top:105px !important;
-  width:180px !important;
-  height:120px !important;
-  border-radius:18px !important;
-  overflow:hidden !important;
-  z-index:8 !important;
-}
-
-.mob-portrait img,
-#mobPhoto{
-  width:100% !important;
-  height:100% !important;
-  object-fit:cover !important;
-}
-
-/* EMPLOYEE CARD POSITION */
-/* Adjust ONLY this number if needed */
-.mob-details{
-  margin-top:20px !important;
-}
-
-/* green name section */
-.mob-details .mob-titleblock{
-  background: rgba(31,143,58,.75) !important;
-}
-
-/* clickable invisible hitboxes for phone/email/web icons */
-
-.mob-hit{
-  position:absolute;
-  z-index:30;
-  width:54px;
-  height:54px;
-  border-radius:999px;
-}
-
-.mob-hit--call{
-  left:170px;
-  top:282px;
-}
-
-.mob-hit--email{
-  left:228px;
-  top:282px;
-}
-
-.mob-hit--web{
-  left:286px;
-  top:282px;
-}
-/* ===== QR position (SVG math-locked) ===== */
-.mob-mock{
-  /* center of the white circle from your SVG */
-  --qr-cx: 23.17%;
-  --qr-cy: 43.84%;
-
-  /* QR circle size (scales nicely on phones) */
-  --qr-size: min(132px, 34vw);
-}
-
-.mob-qrCircle{
-  position:absolute !important;
-  width: var(--qr-size) !important;
-  height: var(--qr-size) !important;
-
-  left: calc(var(--qr-cx) - (var(--qr-size) / 2)) !important;
-  top:  calc(var(--qr-cy) - (var(--qr-size) / 2)) !important;
-
-  border-radius: 999px !important;
-  overflow: hidden !important;
-  background: #fff !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  z-index: 50 !important;
-}
-
-.mob-qrCircle img,
-#mobQr{
-  width: 88% !important;
-  height: 88% !important;
-  object-fit: contain !important;
-  display:block !important;
-}
-/* ===== MOBILE: FINAL (clean, no nesting) ===== */
 @media (max-width: 899px){
 
-  /* spacing that creates room for the top mockup area */
-  .mob-main{
-    padding-top: 330px !important;  /* adjust 300–380 */
-  }
-
-  /* remove the see-thru overlay box */
-  .view--mobile .mob-hero{
+  /* Let children escape and use the full mock as the canvas */
+  .view--mobile .mob-main{
+    position: absolute !important;
+    inset: 0 !important;
     overflow: visible !important;
-    background: none !important;
-    box-shadow: none !important;
   }
 
-  /* employee photo: top-center on mockup */
+  /* IMPORTANT: stop the hero from being the positioning parent */
+  .view--mobile .mob-hero{
+    position: static !important;     /* <— key fix */
+    overflow: visible !important;
+    background: none !important;     /* keeps your “see-thru box” gone */
+    box-shadow: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  /* EMPLOYEE PHOTO — now anchored to .mob-main (full mock), not the hero */
   .view--mobile .mob-portrait{
+    position: absolute !important;
     left: 50% !important;
     right: auto !important;
     transform: translateX(-50%) !important;
 
-    width: 170px !important;
-    height: 170px !important;
-    top: 30px !important;     /* tweak 20–45 */
+    top: 38px !important;           /* tweak 25–60 */
+    width: 175px !important;        /* tweak size */
+    height: 175px !important;
 
-    z-index: 80 !important;   /* above QR, below modal */
+    z-index: 120 !important;        /* above QR (yours is ~50) */
   }
 
-  /* employee info: solid + readable */
+  /* EMPLOYEE INFO — drop it a smidge (bigger = lower) */
   .view--mobile .mob-details{
-    margin-top: 85px !important; /* tweak 80–95 */
+    margin-top: 95px !important;    /* tweak 85–115 */
 
     background: rgba(255,255,255,.92) !important;
     border: 1px solid rgba(0,0,0,.10) !important;
     box-shadow: 0 18px 45px rgba(0,0,0,.25) !important;
     backdrop-filter: none !important;
-
     color: #111 !important;
+    z-index: 3 !important;
   }
 
   .view--mobile .mob-details .mob-titleblock{
     background: rgba(31,143,58,.92) !important;
     border: 0 !important;
-    color:#fff !important;
+    color: #fff !important;
   }
 
   .view--mobile .mob-details .mob-row{
@@ -878,30 +600,8 @@ a{ color: inherit; }
     color: rgba(0,0,0,.85) !important;
   }
 
-  /* modals above everything (Share / Employees) */
+  /* MODALS — always above portrait + QR */
   .modal{ z-index: 5000 !important; }
   .modal__backdrop{ z-index: 5001 !important; }
   .modal__panel{ z-index: 5002 !important; }
-}
-/* ===== MOBILE: lock portrait to the mockup frame (above QR) ===== */
-@media (max-width: 899px){
-
-  /* make sure the mock is the positioning anchor */
-  .view--mobile .mob-mock{
-    position: relative !important;
-  }
-
-  /* take the portrait out of the hero layout and pin it to the mock */
-  .view--mobile .mob-portrait{
-    position: absolute !important;
-    top: 42px !important;         /* tweak 30–60 */
-    left: 50% !important;
-    right: auto !important;
-    transform: translateX(-50%) !important;
-
-    width: 170px !important;
-    height: 170px !important;
-
-    z-index: 120 !important;      /* above QR (50), below modal (5000) */
-  }.view--mobile .mob-main{ overflow: visible !important; }
 }
