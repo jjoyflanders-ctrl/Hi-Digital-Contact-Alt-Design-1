@@ -606,3 +606,22 @@ a{ color: inherit; }
   .modal__backdrop{ z-index: 5001 !important; }
   .modal__panel{ z-index: 5002 !important; }
 }
+/* FORCE employee photo to top center on mobile */
+@media (max-width:899px){
+
+  .mob-portrait{
+    position:absolute !important;
+    top:6px !important;
+    left:50% !important;
+    transform:translateX(-50%) !important;
+
+    width:170px !important;
+    height:170px !important;
+
+    border-radius:20px !important;
+    overflow:hidden !important;
+
+    z-index:90 !important;
+  }
+
+}
