@@ -611,3 +611,39 @@ a{ color: inherit; }
   .modal__backdrop{ z-index: 5001 !important; }
   .modal__panel{ z-index: 5002 !important; }
 }
+/* ===== MOBILE: FINAL LOCK (after fixing HTML structure) ===== */
+@media (max-width: 899px){
+
+  .view--mobile .mob-mock{
+    position: relative !important;
+    --qr-cx: 23.17%;
+    --qr-cy: 43.84%;
+    --qr-size: min(132px, 34vw);
+  }
+
+  /* QR locked (your working math) */
+  .view--mobile .mob-qrCircle{
+    position: absolute !important;
+    width: var(--qr-size) !important;
+    height: var(--qr-size) !important;
+    left: calc(var(--qr-cx) - (var(--qr-size) / 2)) !important;
+    top:  calc(var(--qr-cy) - (var(--qr-size) / 2)) !important;
+    z-index: 60 !important;
+  }
+
+  /* Portrait TOP-CENTER */
+  .view--mobile .mob-portrait{
+    position: absolute !important;
+    top: 22px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 175px !important;
+    height: 175px !important;
+    z-index: 70 !important;
+  }
+
+  /* modals always above everything */
+  .modal{ z-index: 5000 !important; }
+  .modal__backdrop{ z-index: 5001 !important; }
+  .modal__panel{ z-index: 5002 !important; }
+}
