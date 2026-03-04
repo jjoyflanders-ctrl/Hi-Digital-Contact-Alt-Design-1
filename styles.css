@@ -149,7 +149,7 @@ a{ color: inherit; }
   width:92%;
   height:92%;
   border-radius:50%;
-  object-fit:contain;   /* shows full image */
+  object-fit:cover;   /* shows full image */
   object-position:center;
   display:block;
 }
