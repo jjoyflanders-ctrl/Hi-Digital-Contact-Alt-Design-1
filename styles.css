@@ -651,3 +651,43 @@ a{ color: inherit; }
 
   margin-top: 120px;          /* pushes the card down BELOW the hero */
 }
+/* --- MOBILE: mockup icon click targets --- */
+.mob-main{ position: relative; }
+
+/* invisible hit areas */
+.mob-hit{
+  position:absolute;
+  z-index: 20;
+  display:block;
+  /* debug tip: uncomment next line to SEE the hitboxes */
+  /* outline: 2px solid red; */
+}
+
+/* Position these over your 3 icons on the green stripe.
+   If they’re slightly off, adjust left/top values a little. */
+.mob-hit--call{
+  left: 52%;
+  top: 312px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+}
+.mob-hit--email{
+  left: 67%;
+  top: 312px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+}
+.mob-hit--web{
+  left: 82%;
+  top: 312px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+}
+
+/* --- MOBILE: bring the employee details card UP --- */
+.mob-details{
+  margin-top: -55px;  /* adjust: -35 to -85 depending on taste */
+}
