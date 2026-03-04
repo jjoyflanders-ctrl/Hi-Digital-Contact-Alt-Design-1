@@ -687,11 +687,7 @@ a{ color: inherit; }
   border-radius: 999px;
 }
 
-/* --- MOBILE: bring the employee details card UP --- */
+/* FINAL: employee card position (adjust this number) */
 .mob-details{
-  margin-top: -45px;  /* adjust: -35 to -85 depending on taste */
-}
-/* DEBUG: force employee card lower */
-.mob-details{
-  margin-top: 90px !important;
+  margin-top: 35px !important; /* try 35, then 15, then 0 if you want it higher */
 }
