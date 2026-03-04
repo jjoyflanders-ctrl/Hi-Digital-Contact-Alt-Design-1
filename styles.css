@@ -649,5 +649,5 @@ a{ color: inherit; }
   right: auto !important;
   transform: none !important;
 
-  margin-top: 140px;          /* pushes the card down BELOW the hero */
+  margin-top: 120px;          /* pushes the card down BELOW the hero */
 }
