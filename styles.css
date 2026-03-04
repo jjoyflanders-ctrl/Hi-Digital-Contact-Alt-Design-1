@@ -862,3 +862,22 @@ a{ color: inherit; }
 
 }
 }
+/* ===== MOBILE: put employee photo ABOVE the QR (no QR changes) ===== */
+@media (max-width: 899px){
+
+  .view--mobile .mob-portrait{
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+
+    /* KEY: move it out of the translucent panel region */
+    top: -260px !important;   /* adjust this number */
+    z-index: 999 !important;
+  }
+
+}
+@media (max-width: 899px){
+  .view--mobile .mob-details{
+    overflow: hidden !important;
+  }
+}
