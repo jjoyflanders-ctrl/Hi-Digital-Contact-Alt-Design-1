@@ -836,7 +836,7 @@ a{ color: inherit; }
 
   /* 2) Move employee data DOWN (bigger number = lower) */
   .mob-details{
-    margin-top: 70px !important;
+    margin-top: 50px !important;
   }
 
   /* Optional: if you still need the whole block lower, increase this too */
