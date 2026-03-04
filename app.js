@@ -218,6 +218,14 @@ function renderEmployee(emp){
   if (els.mobCall) els.mobCall.href = telHref;
   if (els.mobEmail) els.mobEmail.href = buildMailHref(email);
   if (els.mobWeb) els.mobWeb.href = emp.website ? String(emp.website).trim() : "https://www.highlightindustries.com";
+   // wire mockup icon hit areas (if present)
+const mobCallHit  = document.getElementById("mobCallHit");
+const mobEmailHit = document.getElementById("mobEmailHit");
+const mobWebHit   = document.getElementById("mobWebHit");
+
+if (mobCallHit)  mobCallHit.href  = telHref;
+if (mobEmailHit) mobEmailHit.href = buildMailHref(email);
+if (mobWebHit)   mobWebHit.href   = emp.website ? String(emp.website).trim() : "https://www.highlightindustries.com";
   if (els.mobPhone){
     els.mobPhone.textContent = phoneDisp || "—";
     els.mobPhone.href = telHref;
