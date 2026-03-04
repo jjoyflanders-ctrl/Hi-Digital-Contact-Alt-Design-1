@@ -821,25 +821,20 @@ a{ color: inherit; }
   object-fit: contain !important;
   display:block !important;
 }
-/* ===== FINAL MOBILE SPACING (keeps employee card down) ===== */
-.mob-main{
-  /* this is what creates “space” for the top mockup area */
-  padding-top: 330px !important;  /* adjust: 300-380 */
-}
+/* ===== FINAL MOBILE: CLEAN + STABLE (replace the whole tail section with this) ===== */
 
-/* keep details card behaving normally */
-.mob-details{
-  margin-top: 0 !important;
-}
-/* ===== FINAL MOBILE OVERRIDE (single block, correct) ===== */
+/* Keep the spacing that creates room for the mockup top */
 @media (max-width: 899px){
+  .mob-main{
+    padding-top: 330px !important;  /* adjust 300–380 */
+  }
 
-  /* let the portrait escape the hero (hero has overflow:hidden by default) */
+  /* Let the portrait escape the hero (hero has overflow:hidden above) */
   .view--mobile .mob-hero{
     overflow: visible !important;
   }
 
-  /* bigger + centered portrait (above QR) */
+  /* Employee photo (keep as you have it now) */
   .view--mobile .mob-portrait{
     left: 50% !important;
     right: auto !important;
@@ -849,34 +844,27 @@ a{ color: inherit; }
     height: 170px !important;
     top: 55px !important;
 
-    z-index: 80 !important; /* your QR ends up around 50 */
+    z-index: 80 !important; /* above QR */
   }
 
-  /* move employee data up/down */
+  /* Employee info: SOLID + readable (kills see-thru/ghost edge) */
   .view--mobile .mob-details{
-    margin-top: 85px !important;
-  }
+    margin-top: 70px !important; /* move up/down: 55–90 */
 
-  /* remove the translucent card look */
-  .view--mobile .mob-details{
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-  }
-  /* ===== MOBILE: make employee info readable + hide see-thru overlay ===== */
-@media (max-width: 899px){
-
-  /* Bring back a solid info panel so text is readable */
-  .view--mobile .mob-details{
-    margin-top: 70px !important;          /* moves the info up a bit */
     background: rgba(255,255,255,.92) !important;
     border: 1px solid rgba(0,0,0,.10) !important;
     box-shadow: 0 18px 45px rgba(0,0,0,.25) !important;
     backdrop-filter: none !important;
+
+    color: #111 !important;
   }
 
-  /* Make the rows readable on the light panel */
+  .view--mobile .mob-details .mob-titleblock{
+    background: rgba(31,143,58,.92) !important;
+    border: 0 !important;
+    color:#fff !important;
+  }
+
   .view--mobile .mob-details .mob-row{
     border-bottom: 1px solid rgba(0,0,0,.08) !important;
   }
@@ -887,11 +875,4 @@ a{ color: inherit; }
   .view--mobile .mob-details .mob-v a{
     color: rgba(0,0,0,.85) !important;
   }
-
-  /* Keep the green name pill looking good */
-  .view--mobile .mob-details .mob-titleblock{
-    background: rgba(31,143,58,.92) !important;
-    border: 0 !important;
-  }
-}
 }
