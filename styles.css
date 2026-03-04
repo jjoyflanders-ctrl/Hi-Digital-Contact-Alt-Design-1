@@ -691,3 +691,96 @@ a{ color: inherit; }
 .mob-details{
   margin-top: 35px !important; /* try 35, then 15, then 0 if you want it higher */
 }
+/* =========================
+   MOBILE LAYOUT OVERRIDE
+   (This fixes QR, portrait, and employee card position)
+   ========================= */
+
+.mob-main{
+  padding-top:0 !important;
+}
+
+/* HERO AREA */
+.mob-hero{
+  position:relative !important;
+  min-height:420px !important;
+}
+
+/* QR circle */
+.mob-qrCircle{
+  position:absolute !important;
+  left:26px !important;
+  top:185px !important;
+  width:126px !important;
+  height:126px !important;
+  border-radius:999px !important;
+  overflow:hidden !important;
+  background:#fff !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  z-index:10 !important;
+}
+
+.mob-qrCircle img,
+#mobQr{
+  width:88% !important;
+  height:88% !important;
+  object-fit:contain !important;
+  display:block !important;
+}
+
+/* employee photo */
+.mob-portrait{
+  position:absolute !important;
+  right:26px !important;
+  top:105px !important;
+  width:180px !important;
+  height:120px !important;
+  border-radius:18px !important;
+  overflow:hidden !important;
+  z-index:8 !important;
+}
+
+.mob-portrait img,
+#mobPhoto{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+}
+
+/* EMPLOYEE CARD POSITION */
+/* Adjust ONLY this number if needed */
+.mob-details{
+  margin-top:20px !important;
+}
+
+/* green name section */
+.mob-details .mob-titleblock{
+  background: rgba(31,143,58,.75) !important;
+}
+
+/* clickable invisible hitboxes for phone/email/web icons */
+
+.mob-hit{
+  position:absolute;
+  z-index:30;
+  width:54px;
+  height:54px;
+  border-radius:999px;
+}
+
+.mob-hit--call{
+  left:170px;
+  top:282px;
+}
+
+.mob-hit--email{
+  left:228px;
+  top:282px;
+}
+
+.mob-hit--web{
+  left:286px;
+  top:282px;
+}
