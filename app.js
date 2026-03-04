@@ -5,7 +5,7 @@
 */
 
 const SHOPIFY_URL = "https://highlightindustries.net/pages/connect-v2";
-const DEFAULT_PHOTO = "./assets/building.jpg"; // fallback if employee photo missing
+const DEFAULT_PHOTO = "./assets/building.png"; // fallback if employee photo missing
 const CSV_URL = "./employees.csv";
 
 // ---- tiny helpers ----
