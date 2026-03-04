@@ -836,12 +836,12 @@ a{ color: inherit; }
 
   /* 1) Move employee picture UP (smaller top number = higher) */
   .mob-portrait{
-    top: 70px !important;   /* was ~105px in your current overrides */
+    top: 20px !important;   /* was ~105px in your current overrides */
   }
 
   /* 2) Move employee data DOWN (bigger number = lower) */
   .mob-details{
-    margin-top: 50px !important;
+    margin-top: 45px !important;
   }
 
   /* Optional: if you still need the whole block lower, increase this too */
