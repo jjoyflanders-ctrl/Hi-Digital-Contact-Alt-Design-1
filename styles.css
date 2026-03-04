@@ -826,3 +826,21 @@ a{ color: inherit; }
 .mob-details{
   margin-top: 0 !important;
 }
+/* ===== MOBILE: move portrait UP, move employee card DOWN (QR untouched) ===== */
+@media (max-width: 899px){
+
+  /* 1) Move employee picture UP (smaller top number = higher) */
+  .mob-portrait{
+    top: 70px !important;   /* was ~105px in your current overrides */
+  }
+
+  /* 2) Move employee data DOWN (bigger number = lower) */
+  .mob-details{
+    margin-top: 70px !important;
+  }
+
+  /* Optional: if you still need the whole block lower, increase this too */
+  .mob-main{
+    padding-top: 380px !important;  /* try 380; if needed: 400 / 420 */
+  }
+}
