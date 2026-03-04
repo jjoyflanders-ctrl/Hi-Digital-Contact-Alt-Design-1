@@ -691,3 +691,7 @@ a{ color: inherit; }
 .mob-details{
   margin-top: -45px;  /* adjust: -35 to -85 depending on taste */
 }
+/* DEBUG: force employee card lower */
+.mob-details{
+  margin-top: 90px !important;
+}
