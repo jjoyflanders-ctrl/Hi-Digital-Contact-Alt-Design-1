@@ -586,10 +586,7 @@ a{ color: inherit; }
 }
 /* ===== Mobile layout fixes (put at BOTTOM of styles.css) ===== */
 
-/* remove the top header space if it still exists */
-.mob-main{
-  padding-top: 0 !important;
-}
+
 
 /* make sure hero area has enough vertical room for QR + portrait */
 .mob-hero{
@@ -817,4 +814,14 @@ a{ color: inherit; }
   height: 88% !important;
   object-fit: contain !important;
   display:block !important;
+}
+/* ===== FINAL MOBILE SPACING (keeps employee card down) ===== */
+.mob-main{
+  /* this is what creates “space” for the top mockup area */
+  padding-top: 330px !important;  /* adjust: 300-380 */
+}
+
+/* keep details card behaving normally */
+.mob-details{
+  margin-top: 0 !important;
 }
