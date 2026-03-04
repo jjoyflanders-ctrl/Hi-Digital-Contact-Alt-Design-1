@@ -373,6 +373,11 @@ a{ color: inherit; }
   padding: 12px 14px;
   backdrop-filter: blur(10px);
 }
+.mob-details{
+  margin-top: 45px !important;
+  position: relative;
+  z-index: 3;
+}
 
 /* Name/title block now lives above the rows (per mockup) */
 .mob-details .mob-titleblock{
