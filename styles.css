@@ -534,11 +534,11 @@ a{ color: inherit; }
 .emp-item:hover{ background: rgba(255,255,255,.10); }
 .emp-sub{ opacity:.78; font-weight: 600; font-size: 13px; margin-top: 3px; }
 /* =========================
-   MOBILE: FINAL OVERRIDES (CLEAN)
+   MOBILE: FINAL OVERRIDES (CLEAN + CLOSED)
    - Desktop untouched
-   - Employee info card position untouched
    - QR locked to mockup via % math
-   - Portrait locked to top-center of mockup
+   - Portrait locked to TOP-CENTER
+   - Employee card left alone (no position changes)
    - Modals always on top
    ========================= */
 @media (max-width: 899px){
@@ -553,14 +553,14 @@ a{ color: inherit; }
     --qr-size: min(132px, 34vw);
   }
 
-  /* Don’t let hero backgrounds create “see-thru” overlays */
+  /* Remove the “see-thru overlay” effect from the hero */
   .view--mobile .mob-hero{
     background: none !important;
     box-shadow: none !important;
     overflow: visible !important; /* allows portrait to sit above */
   }
 
-  /* ===== QR: THIS IS YOUR REAL QR ELEMENT ===== */
+  /* QR: lock to the mockup position */
   .view--mobile .mob-qrCircle{
     position: absolute !important;
     width: var(--qr-size) !important;
@@ -587,43 +587,27 @@ a{ color: inherit; }
     display: block !important;
   }
 
-  /* ===== Portrait: top-center of mockup ===== */
+  /* Portrait: FORCE TOP-CENTER of the mock */
   .view--mobile .mob-portrait{
     position: absolute !important;
+    top: 22px !important;        /* tweak 12–40 */
     left: 50% !important;
     right: auto !important;
+    bottom: auto !important;
+    margin: 0 !important;
     transform: translateX(-50%) !important;
 
-    top: 38px !important;     /* tweak 28–55 */
     width: 175px !important;
     height: 175px !important;
 
-    z-index: 70 !important;   /* above QR */
+    z-index: 70 !important;      /* above QR */
   }
 
-  /* ===== Employee info card: DO NOT MOVE IT (leave your existing rules alone) ===== */
-  /* (intentionally no .mob-details overrides here) */
+  /* Employee info card: leave your existing placement alone */
+  /* (No .mob-details rules here on purpose) */
 
-  /* ===== Modals: ALWAYS above portrait + QR ===== */
+  /* Modals always above portrait + QR */
   .modal{ z-index: 5000 !important; }
   .modal__backdrop{ z-index: 5001 !important; }
   .modal__panel{ z-index: 5002 !important; }
-
-/* ===== MOBILE: force portrait to top of mockup ===== */
-@media (max-width: 899px){
-  .view--mobile .mob-mock{ position: relative !important; }
-
-  .view--mobile .mob-portrait{
-    position: absolute !important;
-    top: 22px !important;      /* tweak 12–34 */
-    bottom: auto !important;
-    margin: 0 !important;
-
-    left: 50% !important;
-    right: auto !important;
-    transform: translateX(-50%) !important;
-
-    z-index: 70 !important;
-  }
 }
-
