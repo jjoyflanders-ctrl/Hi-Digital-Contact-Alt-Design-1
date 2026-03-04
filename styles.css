@@ -848,4 +848,17 @@ a{ color: inherit; }
   .mob-main{
     padding-top: 380px !important;  /* try 380; if needed: 400 / 420 */
   }
+  /* ===== SAFEST MOBILE OVERRIDE (paste at very bottom) ===== */
+@media (max-width: 899px){
+
+  /* employee photo: force centered + on top of the stack */
+  .view--mobile .mob-mock .mob-portrait{
+    left: 50% !important;
+    right: auto !important;              /* cancels the rule that pushes it right */
+    transform: translateX(-50%) !important;
+    top: 16px !important;                /* adjust: 8–28 */
+    z-index: 999 !important;             /* above QR and everything */
+  }
+
+}
 }
