@@ -883,3 +883,25 @@ a{ color: inherit; }
   .modal__backdrop{ z-index: 5001 !important; }
   .modal__panel{ z-index: 5002 !important; }
 }
+/* ===== MOBILE: lock portrait to the mockup frame (above QR) ===== */
+@media (max-width: 899px){
+
+  /* make sure the mock is the positioning anchor */
+  .view--mobile .mob-mock{
+    position: relative !important;
+  }
+
+  /* take the portrait out of the hero layout and pin it to the mock */
+  .view--mobile .mob-portrait{
+    position: absolute !important;
+    top: 42px !important;         /* tweak 30–60 */
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+
+    width: 170px !important;
+    height: 170px !important;
+
+    z-index: 120 !important;      /* above QR (50), below modal (5000) */
+  }
+}
