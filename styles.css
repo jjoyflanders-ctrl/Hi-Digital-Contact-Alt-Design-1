@@ -584,3 +584,70 @@ a{ color: inherit; }
 .mob-main{
   margin-top:-40px;
 }
+/* ===== Mobile layout fixes (put at BOTTOM of styles.css) ===== */
+
+/* remove the top header space if it still exists */
+.mob-main{
+  padding-top: 0 !important;
+}
+
+/* make sure hero area has enough vertical room for QR + portrait */
+.mob-hero{
+  position: relative !important;
+  min-height: 360px;          /* adjust up/down if needed */
+  padding-top: 24px;
+}
+
+/* keep QR above everything */
+.mob-qrCircle{
+  position: absolute !important;
+  left: 22px;
+  top: 190px;                 /* adjust if you want it higher/lower */
+  width: 128px;
+  height: 128px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #fff;
+  border: 6px solid #fff;
+  z-index: 10;
+}
+
+/* ensure the QR image actually renders inside the circle */
+.mob-qrCircle img,
+#mobQr{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;        /* contain = no cropping */
+}
+
+/* portrait smaller so there’s room */
+.mob-portrait{
+  position: absolute !important;
+  right: 22px;
+  top: 120px;
+  width: 170px;               /* adjust smaller/larger */
+  height: 120px;
+  border-radius: 18px;
+  overflow: hidden;
+  z-index: 6;
+}
+
+.mob-portrait img,
+#mobPhoto{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* IMPORTANT: stop the details card from being absolutely placed too high */
+.mob-details{
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+
+  margin-top: 120px;          /* pushes the card down BELOW the hero */
+}
