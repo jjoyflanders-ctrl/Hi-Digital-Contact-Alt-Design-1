@@ -609,3 +609,20 @@ a{ color: inherit; }
   .modal__backdrop{ z-index: 5001 !important; }
   .modal__panel{ z-index: 5002 !important; }
 }
+/* ===== MOBILE: force portrait to top of mockup ===== */
+@media (max-width: 899px){
+  .view--mobile .mob-mock{ position: relative !important; }
+
+  .view--mobile .mob-portrait{
+    position: absolute !important;
+    top: 22px !important;      /* tweak 12–34 */
+    bottom: auto !important;
+    margin: 0 !important;
+
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+
+    z-index: 70 !important;
+  }
+}
