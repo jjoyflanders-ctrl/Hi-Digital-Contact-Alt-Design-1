@@ -571,9 +571,16 @@ a{ color: inherit; }
     z-index: 120 !important;        /* above QR (yours is ~50) */
   }
 
+@media (max-width: 899px){
+
+  /* Ensure QR + portrait anchor to the hero container */
+  .view--mobile .mob-hero{
+    position: relative !important;
+  }
+
   /* EMPLOYEE INFO — drop it a smidge (bigger = lower) */
   .view--mobile .mob-details{
-    margin-top: 95px !important;    /* tweak 85–115 */
+    margin-top: 95px !important;
 
     background: rgba(255,255,255,.92) !important;
     border: 1px solid rgba(0,0,0,.10) !important;
@@ -592,16 +599,31 @@ a{ color: inherit; }
   .view--mobile .mob-details .mob-row{
     border-bottom: 1px solid rgba(0,0,0,.08) !important;
   }
+
   .view--mobile .mob-details .mob-k{
     color: rgba(0,0,0,.55) !important;
   }
+
   .view--mobile .mob-details .mob-v,
   .view--mobile .mob-details .mob-v a{
     color: rgba(0,0,0,.85) !important;
+  }
+
+  /* QR anchored to mockup corner */
+  .view--mobile .mob-qr{
+    position: absolute !important;
+    left: 24px !important;
+    top: 110px !important;
+
+    width: 120px !important;
+    height: 120px !important;
+
+    z-index: 70 !important;
   }
 
   /* MODALS — always above portrait + QR */
   .modal{ z-index: 5000 !important; }
   .modal__backdrop{ z-index: 5001 !important; }
   .modal__panel{ z-index: 5002 !important; }
+
 }
