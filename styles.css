@@ -534,33 +534,29 @@ a{ color: inherit; }
 .emp-item:hover{ background: rgba(255,255,255,.10); }
 .emp-sub{ opacity:.78; font-weight: 600; font-size: 13px; margin-top: 3px; }
 /* =========================
-   MOBILE: FINAL OVERRIDES (CLEAN + CLOSED)
-   - Desktop untouched
-   - QR locked to mockup via % math
-   - Portrait locked to TOP-CENTER
-   - Employee card left alone (no position changes)
-   - Modals always on top
+   MOBILE: FINAL (ONE BLOCK ONLY)
+   QR fixed, info untouched, photo locked to mock top-center, modals on top
    ========================= */
 @media (max-width: 899px){
 
-  /* Make the mock the positioning canvas */
+  /* Anchor all absolute elements to the mock frame */
   .view--mobile .mob-mock{
     position: relative !important;
 
-    /* QR placement (percent-based to match your mockup) */
+    /* QR placement (math locked) */
     --qr-cx: 23.17%;
     --qr-cy: 43.84%;
     --qr-size: min(132px, 34vw);
   }
 
-  /* Remove the “see-thru overlay” effect from the hero */
+  /* Remove hero overlay visuals + prevent clipping */
   .view--mobile .mob-hero{
     background: none !important;
     box-shadow: none !important;
-    overflow: visible !important; /* allows portrait to sit above */
+    overflow: visible !important;
   }
 
-  /* QR: lock to the mockup position */
+  /* QR locked to mock */
   .view--mobile .mob-qrCircle{
     position: absolute !important;
     width: var(--qr-size) !important;
@@ -576,7 +572,7 @@ a{ color: inherit; }
     display: grid !important;
     place-items: center !important;
 
-    z-index: 60 !important; /* below portrait */
+    z-index: 60 !important;
   }
 
   .view--mobile .mob-qrCircle img,
@@ -587,10 +583,10 @@ a{ color: inherit; }
     display: block !important;
   }
 
-  /* Portrait: FORCE TOP-CENTER of the mock */
+  /* PHOTO: lock to TOP of the mock (THIS is the only portrait rule) */
   .view--mobile .mob-portrait{
     position: absolute !important;
-    top: 22px !important;        /* tweak 12–40 */
+    top: 18px !important;          /* <— if it’s still low, drop this to 8–12 */
     left: 50% !important;
     right: auto !important;
     bottom: auto !important;
@@ -600,78 +596,13 @@ a{ color: inherit; }
     width: 175px !important;
     height: 175px !important;
 
-    z-index: 70 !important;      /* above QR */
+    z-index: 80 !important;        /* above QR */
   }
 
-  /* Employee info card: leave your existing placement alone */
-  /* (No .mob-details rules here on purpose) */
+  /* Employee info card: leave it alone (no overrides) */
 
-  /* Modals always above portrait + QR */
+  /* Modals always above everything */
   .modal{ z-index: 5000 !important; }
   .modal__backdrop{ z-index: 5001 !important; }
   .modal__panel{ z-index: 5002 !important; }
-}
-/* ===== MOBILE: FINAL LOCK (after fixing HTML structure) ===== */
-@media (max-width: 899px){
-
-  .view--mobile .mob-mock{
-    position: relative !important;
-    --qr-cx: 23.17%;
-    --qr-cy: 43.84%;
-    --qr-size: min(132px, 34vw);
-  }
-
-  /* QR locked (your working math) */
-  .view--mobile .mob-qrCircle{
-    position: absolute !important;
-    width: var(--qr-size) !important;
-    height: var(--qr-size) !important;
-    left: calc(var(--qr-cx) - (var(--qr-size) / 2)) !important;
-    top:  calc(var(--qr-cy) - (var(--qr-size) / 2)) !important;
-    z-index: 60 !important;
-  }
-
-  /* Portrait TOP-CENTER */
-  .view--mobile .mob-portrait{
-    position: absolute !important;
-    top: 22px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 175px !important;
-    height: 175px !important;
-    z-index: 70 !important;
-  }
-
-  /* modals always above everything */
-  .modal{ z-index: 5000 !important; }
-  .modal__backdrop{ z-index: 5001 !important; }
-  .modal__panel{ z-index: 5002 !important; }
-}
-/* ===== MOBILE: LOCK EMPLOYEE PHOTO TO TOP OF MOCKUP (final) ===== */
-@media (max-width: 899px){
-
-  /* the mockup frame becomes the anchor */
-  .view--mobile .mob-mock{
-    position: relative !important;
-  }
-
-  /* portrait anchored to the mockup (not hero / not main padding) */
-  .view--mobile .mob-mock .mob-portrait{
-    position: absolute !important;
-    top: 24px !important;        /* tweak 10–40 */
-    left: 50% !important;
-    right: auto !important;
-    bottom: auto !important;
-    transform: translateX(-50%) !important;
-
-    width: 175px !important;
-    height: 175px !important;
-
-    z-index: 80 !important;
-  }
-
-  /* stop hero from clipping it */
-  .view--mobile .mob-hero{
-    overflow: visible !important;
-  }
 }
