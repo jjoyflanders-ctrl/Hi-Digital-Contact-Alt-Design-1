@@ -1,7 +1,7 @@
-/* HI | Connect — fresh start (GitHub Pages + Shopify iframe friendly) */
+/* HI | Connect — CLEAN styles.css (GitHub Pages + Shopify iframe friendly) */
 
 :root{
-  --green:#1F8f3A;
+  --green:#1f8f3a; /* brand green */
   --dark:#0f0f10;
   --ink:#111;
   --panel: rgba(255,255,255,.78);
@@ -16,9 +16,10 @@
 html,body{ height:100%; }
 body{
   margin:0;
-  background: radial-gradient(1200px 600px at 20% 10%, rgba(63,132,91,.25), transparent 60%),
-              radial-gradient(900px 550px at 80% 85%, rgba(255,255,255,.10), transparent 60%),
-              var(--dark);
+  background:
+    radial-gradient(1200px 600px at 20% 10%, rgba(63,132,91,.25), transparent 60%),
+    radial-gradient(900px 550px at 80% 85%, rgba(255,255,255,.10), transparent 60%),
+    var(--dark);
   font-family: var(--font);
   color: #f2f2f2;
 }
@@ -30,12 +31,8 @@ a{ color: inherit; }
 }
 
 .view{ display:none; }
-@media (min-width: 900px){
-  .view--desktop{ display:block; }
-}
-@media (max-width: 899px){
-  .view--mobile{ display:block; }
-}
+@media (min-width: 900px){ .view--desktop{ display:block; } }
+@media (max-width: 899px){ .view--mobile{ display:block; } }
 
 /* Buttons */
 .btn{
@@ -54,11 +51,11 @@ a{ color: inherit; }
   border-color: rgba(255,255,255,.18);
 }
 .btn--solid:hover{ filter: brightness(1.05); }
-.btn--ghost{
-  background: rgba(0,0,0,.18);
-}
+.btn--ghost{ background: rgba(0,0,0,.18); }
 
-/* Desktop layout */
+/* =========================
+   DESKTOP (unchanged layout)
+   ========================= */
 .desk-shell{
   min-height:100vh;
   display:flex;
@@ -73,8 +70,7 @@ a{ color: inherit; }
   border-radius: 26px;
   box-shadow: var(--shadow);
   overflow:hidden;
-  background:
-    url("./assets/Desktop%20Template.svg") center/cover no-repeat;
+  background: url("./assets/Desktop%20Template.svg") center/cover no-repeat;
 }
 
 /* Top search + action buttons */
@@ -113,44 +109,34 @@ a{ color: inherit; }
   gap: 10px;
 }
 
-/* Overlay content positions (tweak these to match your mockups) */
+/* Overlay content */
 .desk-overlay{
   position:absolute;
   inset: 0;
   z-index: 2;
 }
+
+/* Employee photo circle (single definition only) */
 .desk-photo{
   position:absolute;
   left: 23.86%;
   top: 51.21%;
   transform: translate(-50%, -50%);
-  width: clamp(340px, 34%, 460px); /* smaller overall circle */
-  height: clamp(340px, 34%, 460px);
-  border-radius: 999px;
-  overflow:hidden;
-  padding: 14px; /* creates white frame */
-  background: #ffffff; /* white frame color */
-  box-shadow: 0 16px 50px rgba(0,0,0,.45);
-}
-
-/* employee photo container (white circle) */
-.desk-photo{
-  width:520px;
-  height:520px;
-  border-radius:50%;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
   background:#fff;
   overflow:hidden;
   display:grid;
   place-items:center;
+  box-shadow: 0 16px 50px rgba(0,0,0,.45);
 }
-
-/* employee image */
 .desk-photo img{
-  width:92%;
-  height:92%;
-  border-radius:50%;
-  object-fit:cover;   /* shows full image */
-  object-position:center;
+  width: 92%;
+  height: 92%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
   display:block;
 }
 
@@ -158,7 +144,7 @@ a{ color: inherit; }
   position:absolute;
   left: 640px;
   top: 175px;
-  right: 35px; /* wider card */
+  right: 35px;
   color:#0b0b0b;
   background: rgba(255,255,255,.80);
   border: 1px solid rgba(255,255,255,.18);
@@ -194,23 +180,19 @@ a{ color: inherit; }
 .meta-value{ font-weight: 700; text-decoration:none; }
 .meta-value:hover{ text-decoration: underline; }
 
-
-
-/* Desktop mockup button hit areas (transparent buttons on top of the SVG artwork) */
+/* Desktop mockup hit areas */
 .desk-hit{
   position:absolute;
   border:0;
   background: transparent;
   cursor:pointer;
-  z-index: 6; /* above mock and content */
+  z-index: 6;
 }
 .desk-hit:focus-visible{
   outline: 3px solid rgba(63,132,91,.75);
   outline-offset: 4px;
   border-radius: 999px;
 }
-
-/* Tuned for Desktop Template.svg (1900x1200). Adjust if your mock changes. */
 .desk-hit--save{
   left: 49%;
   top: 79.5%;
@@ -226,11 +208,14 @@ a{ color: inherit; }
   border-radius: 999px;
 }
 
-/* Optional: hide the top-right action buttons so only the mockup buttons are used */
+/* Optional: hide top-right action buttons */
 @media (min-width: 900px){
   .desk-actions{ display:none; }
 }
-/* Mobile layout */
+
+/* =========================
+   MOBILE BASE
+   ========================= */
 .mob-shell{
   min-height:100vh;
   display:flex;
@@ -257,18 +242,6 @@ a{ color: inherit; }
   justify-content:flex-start;
   z-index: 5;
 }
-.mob-logo{
-  width: 58px;
-  height: 38px;
-  border-radius: 14px;
-  background: rgba(0,0,0,.25);
-  border: 1px solid rgba(255,255,255,.14);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight: 800;
-  letter-spacing: .5px;
-}
 
 .mob-main{
   position:absolute;
@@ -279,6 +252,7 @@ a{ color: inherit; }
   gap: 14px;
 }
 
+/* Keep hero simple — we remove its overlay in the final mobile block */
 .mob-hero{
   position:relative;
   height: 210px;
@@ -289,7 +263,7 @@ a{ color: inherit; }
     linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,0));
 }
 
-/* centered employee photo */
+/* Base portrait (final position is set in the final mobile block) */
 .mob-portrait{
   position:absolute;
   left:50%;
@@ -297,15 +271,12 @@ a{ color: inherit; }
   transform: translateX(-50%);
   width:120px;
   height:120px;
-
-  /* square photo so it doesn’t compete with the circle motif */
   border-radius:16px;
   overflow:hidden;
   background: rgba(255,255,255,.10);
   border:0;
   box-shadow:0 18px 50px rgba(0,0,0,.45);
 }
-
 .mob-portrait img{
   width:100%;
   height:100%;
@@ -314,7 +285,7 @@ a{ color: inherit; }
   object-position:55% 35%;
 }
 
-/* QR circle on the left */
+/* QR circle base (final position is set in the final mobile block) */
 .mob-qrCircle{
   position:absolute;
   left: 16px;
@@ -334,7 +305,27 @@ a{ color: inherit; }
   display:block;
 }
 
-.mob-titleblock{ min-width: 0; }
+/* Details card (you said it’s in the right spot — keep as-is) */
+.mob-details{
+  margin-top: 45px !important; /* your chosen spot */
+  position: relative;
+  z-index: 3;
+  background: rgba(0,0,0,.20);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 20px;
+  padding: 12px 14px;
+  backdrop-filter: blur(10px);
+}
+
+.mob-details .mob-titleblock{
+  margin: 0 0 12px;
+  padding: 12px 12px 10px;
+  border-radius: 18px;
+  background: rgba(31,143,58,.72);
+  border: 1px solid rgba(255,255,255,.14);
+  color:#fff;
+}
+
 .mob-name{
   font-size: 34px;
   font-weight: 900;
@@ -349,45 +340,6 @@ a{ color: inherit; }
   text-shadow: 0 10px 22px rgba(0,0,0,.45);
 }
 
-
-.icon-btn{
-  width: 54px;
-  height: 44px;
-  border-radius: 14px;
-  background: rgba(255,255,255,.16);
-  border: 1px solid rgba(255,255,255,.18);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
-  font-size: 18px;
-}
-.icon-btn:active{ transform: scale(.98); }
-
-.mob-details{
-  /* sit a bit lower under the action bar */
-  margin-top: 90px;
-  background: rgba(0,0,0,.20);
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 20px;
-  padding: 12px 14px;
-  backdrop-filter: blur(10px);
-}
-.mob-details{
-  margin-top: 45px !important;
-  position: relative;
-  z-index: 3;
-}
-
-/* Name/title block now lives above the rows (per mockup) */
-.mob-details .mob-titleblock{
-  margin: 0 0 12px;
-  padding: 12px 12px 10px;
-  border-radius: 18px;
-  background: rgba(63,132,91,.72);
-  border: 1px solid rgba(255,255,255,.14);
-  color:#fff;
-}
 .mob-row{
   display:flex;
   justify-content:space-between;
@@ -424,8 +376,7 @@ a{ color: inherit; }
   gap: 8px;
   border-radius: 18px;
   border: 1px solid rgba(255,255,255,.16);
-  /* make the left floating buttons green (instead of white/gray) */
-  background: rgba(63,132,91,.30);
+  background: rgba(31,143,58,.30);
   color:#fff;
   padding: 10px 10px;
   font-weight: 800;
@@ -436,8 +387,13 @@ a{ color: inherit; }
   border-color: rgba(255,255,255,.18);
 }
 .pill:active{ transform: scale(.99); }
-.pill-ic{ opacity:.95; }
-.pill-tx{ letter-spacing:.2px; }
+
+/* Invisible icon click targets (keep if you’re using them) */
+.mob-hit{
+  position:absolute;
+  z-index: 20;
+  display:block;
+}
 
 /* Modal */
 .modal{ position:fixed; inset:0; display:none; z-index: 20; }
@@ -473,73 +429,13 @@ a{ color: inherit; }
 }
 .modal__body{ padding: 14px; }
 
-.card{
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.06);
-  border-radius: 18px;
-  padding: 14px;
-}
-.card + .card{ margin-top: 12px; }
-
-.share-grid{
-  display:grid;
-  grid-template-columns: 160px 1fr;
-  gap: 14px;
-}
-.qrbox{
-  border-radius: 18px;
-  background: rgba(255,255,255,.10);
-  border: 1px solid rgba(255,255,255,.14);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding: 10px;
-}
-.qrbox img{
-  width: 140px;
-  height: 140px;
-  object-fit: contain;
-  background: #fff;
-  border-radius: 12px;
-  padding: 6px;
-}
-.share-actions{
-  display:flex;
-  flex-direction:column;
-  gap: 10px;
-}
-.small{
-  font-size: 13px;
-  opacity: .78;
-}
-.list{
-  display:flex;
-  flex-direction:column;
-  gap: 8px;
-}
-.list button{
-  width: 100%;
-  text-align:left;
-  display:flex;
-  justify-content:space-between;
-  gap: 10px;
-}
-.emp-item{
-  padding: 12px 12px;
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.06);
-  cursor:pointer;
-}
-.emp-item:hover{ background: rgba(255,255,255,.10); }
-.emp-sub{ opacity:.78; font-weight: 600; font-size: 13px; margin-top: 3px; }
 /* =========================
-   MOBILE: FINAL (ONE BLOCK ONLY)
-   QR fixed, info untouched, photo locked to mock top-center, modals on top
+   MOBILE FINAL OVERRIDES
+   (ONE block only)
    ========================= */
 @media (max-width: 899px){
 
-  /* Anchor all absolute elements to the mock frame */
+  /* Anchor to the mock */
   .view--mobile .mob-mock{
     position: relative !important;
 
@@ -549,44 +445,33 @@ a{ color: inherit; }
     --qr-size: min(132px, 34vw);
   }
 
-  /* Remove hero overlay visuals + prevent clipping */
+  /* Remove hero overlay “ghost box” + prevent clipping */
   .view--mobile .mob-hero{
     background: none !important;
     box-shadow: none !important;
     overflow: visible !important;
   }
 
-  /* QR locked to mock */
+  /* QR math-lock */
   .view--mobile .mob-qrCircle{
-    position: absolute !important;
+    position:absolute !important;
     width: var(--qr-size) !important;
     height: var(--qr-size) !important;
-
     left: calc(var(--qr-cx) - (var(--qr-size) / 2)) !important;
     top:  calc(var(--qr-cy) - (var(--qr-size) / 2)) !important;
-
-    border-radius: 999px !important;
-    overflow: hidden !important;
-    background: #fff !important;
-
-    display: grid !important;
-    place-items: center !important;
-
     z-index: 60 !important;
   }
-
   .view--mobile .mob-qrCircle img,
   .view--mobile #mobQr{
     width: 88% !important;
     height: 88% !important;
     object-fit: contain !important;
-    display: block !important;
   }
 
-  /* PHOTO: lock to TOP of the mock (THIS is the only portrait rule) */
-  .view--mobile .mob-portrait{
-    position: absolute !important;
-    top: 18px !important;          /* <— if it’s still low, drop this to 8–12 */
+  /* Employee photo: TOP CENTER of the mockup */
+  .view--mobile .mob-mock .mob-portrait{
+    position:absolute !important;
+    top: 12px !important;            /* <-- change THIS if needed (0–30) */
     left: 50% !important;
     right: auto !important;
     bottom: auto !important;
@@ -596,12 +481,10 @@ a{ color: inherit; }
     width: 175px !important;
     height: 175px !important;
 
-    z-index: 80 !important;        /* above QR */
+    z-index: 80 !important;
   }
 
-  /* Employee info card: leave it alone (no overrides) */
-
-  /* Modals always above everything */
+  /* Ensure modals always appear above QR + portrait */
   .modal{ z-index: 5000 !important; }
   .modal__backdrop{ z-index: 5001 !important; }
   .modal__panel{ z-index: 5002 !important; }
