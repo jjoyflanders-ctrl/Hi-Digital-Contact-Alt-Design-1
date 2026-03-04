@@ -689,5 +689,5 @@ a{ color: inherit; }
 
 /* --- MOBILE: bring the employee details card UP --- */
 .mob-details{
-  margin-top: -35px;  /* adjust: -35 to -85 depending on taste */
+  margin-top: -45px;  /* adjust: -35 to -85 depending on taste */
 }
