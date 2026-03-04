@@ -559,3 +559,33 @@ a{ color: inherit; }
   object-fit:contain;
   display:block;
 }
+/* MOBILE HERO LAYOUT */
+.mob-hero{
+  position:relative;
+}
+
+/* QR circle */
+.mob-qrCircle{
+  position:absolute;
+  left:24px;
+  top:220px;
+
+  width:110px;
+  height:110px;
+
+  border-radius:50%;
+  overflow:hidden;
+  background:#fff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* QR image */
+#mobQr{
+  width:88%;
+  height:88%;
+  object-fit:contain;
+  display:block;
+}
