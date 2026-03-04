@@ -647,3 +647,31 @@ a{ color: inherit; }
   .modal__backdrop{ z-index: 5001 !important; }
   .modal__panel{ z-index: 5002 !important; }
 }
+/* ===== MOBILE: LOCK EMPLOYEE PHOTO TO TOP OF MOCKUP (final) ===== */
+@media (max-width: 899px){
+
+  /* the mockup frame becomes the anchor */
+  .view--mobile .mob-mock{
+    position: relative !important;
+  }
+
+  /* portrait anchored to the mockup (not hero / not main padding) */
+  .view--mobile .mob-mock .mob-portrait{
+    position: absolute !important;
+    top: 24px !important;        /* tweak 10–40 */
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: translateX(-50%) !important;
+
+    width: 175px !important;
+    height: 175px !important;
+
+    z-index: 80 !important;
+  }
+
+  /* stop hero from clipping it */
+  .view--mobile .mob-hero{
+    overflow: visible !important;
+  }
+}
