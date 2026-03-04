@@ -831,35 +831,15 @@ a{ color: inherit; }
 .mob-details{
   margin-top: 0 !important;
 }
-/* ===== FINAL MOBILE OVERRIDES (ONLY THESE AT VERY BOTTOM) ===== */
+/* ===== FINAL MOBILE OVERRIDE (single block, correct) ===== */
 @media (max-width: 899px){
 
-  /* keep your existing QR EXACTLY as-is (do not move it) */
-  /* (we are not touching .mob-qrCircle here on purpose) */
-
-  /* employee photo: centered and ABOVE the QR / above the translucent panel */
-  .view--mobile .mob-mock .mob-portrait{
-    left: 50% !important;
-    right: auto !important;
-    transform: translateX(-50%) !important;
-
-    top: -260px !important;      /* adjust: -230 to -320 */
-    z-index: 999 !important;
-  }
-
-  /* tame the translucent panel edge */
-  .view--mobile .mob-mock .mob-details{
-    overflow: hidden !important;
-  }
-  /* ===== FINAL MOBILE OVERRIDE (KEEP THIS AS THE ONLY MOBILE OVERRIDE AT THE BOTTOM) ===== */
-@media (max-width: 899px){
-
-  /* allow portrait to sit above hero */
+  /* let the portrait escape the hero (hero has overflow:hidden by default) */
   .view--mobile .mob-hero{
     overflow: visible !important;
   }
 
-  /* employee photo: centered + bigger + above QR */
+  /* bigger + centered portrait (above QR) */
   .view--mobile .mob-portrait{
     left: 50% !important;
     right: auto !important;
@@ -869,15 +849,15 @@ a{ color: inherit; }
     height: 170px !important;
     top: 55px !important;
 
-    z-index: 80 !important; /* above QR */
+    z-index: 80 !important; /* your QR ends up around 50 */
   }
 
-  /* employee data position */
+  /* move employee data up/down */
   .view--mobile .mob-details{
     margin-top: 85px !important;
   }
 
-  /* remove the transparent card look */
+  /* remove the translucent card look */
   .view--mobile .mob-details{
     background: transparent !important;
     border: 0 !important;
