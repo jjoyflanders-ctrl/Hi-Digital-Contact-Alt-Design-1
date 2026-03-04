@@ -616,15 +616,22 @@ a{ color: inherit; }
   .view--mobile .mob-hero{ position:static !important; }
 
   /* now the portrait will pin to the top of the phone frame */
-  .view--mobile .mob-portrait{
-    position:absolute !important;
-    top: 8px !important;
+  
+}
+/* Mobile: photo pinned to top-center of the phone frame */
+@media (max-width: 899px){
+  .view--mobile .mob-mock > .mob-portrait{
+    position: absolute !important;
+    top: 10px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
 
-    width:170px !important;
-    height:170px !important;
+    width: 175px !important;
+    height: 175px !important;
 
-    z-index:90 !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+
+    z-index: 90 !important; /* above QR */
   }
 }
