@@ -186,6 +186,29 @@ function renderEmployee(emp){
   const phoneDisp = buildPhoneDisplay(emp.phone, emp.phone_ext);
   const telHref = buildTelHref(emp.phone, emp.phone_ext);
   const email = emp.email || "";
+   // --- Mobile mockup icon click targets (green-bar icons) ---
+const mobCallHit = document.getElementById("mobCallHit");
+const mobEmailHit = document.getElementById("mobEmailHit");
+const mobWebHit = document.getElementById("mobWebHit");
+
+// phone
+if (mobCallHit && emp.phone) {
+  const digits = String(emp.phone).replace(/[^\d+]/g, "");
+  mobCallHit.href = `tel:${digits}`;
+}
+
+// email
+if (mobEmailHit && emp.email) {
+  mobEmailHit.href = `mailto:${emp.email}`;
+}
+
+// website
+if (mobWebHit) {
+  const url = (emp.website && emp.website.trim())
+    ? emp.website.trim()
+    : "https://www.highlightindustries.com";
+  mobWebHit.href = url.startsWith("http") ? url : `https://${url}`;
+}
 
   // desktop
   if (els.deskPhoto){
