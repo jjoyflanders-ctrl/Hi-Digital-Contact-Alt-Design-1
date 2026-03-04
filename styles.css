@@ -365,7 +365,7 @@ a{ color: inherit; }
 
 .mob-details{
   /* sit a bit lower under the action bar */
-  margin-top: 26px;
+  margin-top: 90px;
   background: rgba(0,0,0,.20);
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 20px;
