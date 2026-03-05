@@ -214,6 +214,14 @@ function renderEmployee(emp) {
     els.deskEmail.textContent = email || "—";
     els.deskEmail.href = buildMailHref(email);
   }
+   // mobile mockup button hit areas (call / email / website)
+if (els.mobCallHit)  els.mobCallHit.href  = telHref || "#";
+if (els.mobEmailHit) els.mobEmailHit.href = buildMailHref(email) || "#";
+if (els.mobWebHit) {
+  els.mobWebHit.href = "https://www.highlightindustries.com";
+  els.mobWebHit.target = "_blank";
+  els.mobWebHit.rel = "noopener";
+}
 
   // mobile
   if (els.mobPhoto) {
