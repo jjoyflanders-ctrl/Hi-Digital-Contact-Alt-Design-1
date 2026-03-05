@@ -586,7 +586,7 @@ a{ color: inherit; }
   /* PHOTO: lock to TOP of the mock (THIS is the only portrait rule) */
   .view--mobile .mob-portrait{
     position: absolute !important;
-    top: 18px !important;          /* <— if it’s still low, drop this to 8–12 */
+    top: 25px !important;          /* <— if it’s still low, drop this to 8–12 */
     left: 50% !important;
     right: auto !important;
     bottom: auto !important;
