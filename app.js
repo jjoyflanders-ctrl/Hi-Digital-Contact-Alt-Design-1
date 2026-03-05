@@ -179,10 +179,11 @@ function findEmployee(query) {
 }
 
 function photoSrc(emp) {
-  const p = String(emp.photo || "").trim();
-  if (!p) return DEFAULT_PHOTO;
-  if (/^https?:\/\//i.test(p)) return p;
-  return `./assets/${encodeURIComponent(p)}`;
+  if (!emp || !emp.id) return DEFAULT_PHOTO;
+
+  const id = String(emp.id).trim().toLowerCase();
+
+  return `./assets/${id}.jpg`;
 }
 
 function safeWebUrl(emp) {
@@ -236,7 +237,8 @@ if (els.mobWebHit) {
   if (els.mobTitle) els.mobTitle.textContent = title;
 
   // QR
-  if (els.mobQr) els.mobQr.src = qrImgUrl(SHOPIFY_URL);
+  const profileUrl = `${SHOPIFY_URL}?id=${encodeURIComponent(String(emp.id || "").trim().toLowerCase())}`;
+  if (els.mobQr) els.mobQr.src = qrImgUrl(profileUrl);
 
   // mobile green bar buttons (these are the ones you said must be wired)
   if (els.mobCall)  els.mobCall.href  = telHref;
@@ -542,9 +544,21 @@ async function init() {
 
     wireUI();
 
-    // default to first employee (or Jessica if present)
-    const preferred = EMPLOYEES.find(e => normalize(e.id) === "jessica") || EMPLOYEES[0];
-    renderEmployee(preferred);
+   // check if a QR code requested a specific employee
+const params = new URLSearchParams(window.location.search);
+const requestedId = normalize(params.get("id"));
+
+if (requestedId) {
+  const match = EMPLOYEES.find(e => normalize(e.id) === requestedId);
+  if (match) {
+    renderEmployee(match);
+    return;
+  }
+}
+
+// fallback if no id
+const preferred = EMPLOYEES.find(e => normalize(e.id) === "jessica") || EMPLOYEES[0];
+renderEmployee(preferred);
   } catch (err) {
     console.error(err);
     toast("Couldn't load employees.csv");
