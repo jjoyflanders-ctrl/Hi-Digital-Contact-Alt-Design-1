@@ -327,11 +327,17 @@ a{ color: inherit; }
   place-items:center;
   box-shadow: 0 10px 30px rgba(0,0,0,.35);
 }
+.mob-qrCircle{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .mob-qrCircle img{
   width: 76px;
   height: 76px;
   object-fit: contain;
-  display:block;
+  display: block;
 }
 
 .mob-titleblock{ min-width: 0; }
