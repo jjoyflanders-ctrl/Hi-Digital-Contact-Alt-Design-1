@@ -354,12 +354,13 @@ function closeModal() {
 
 function openShareModal(emp) {
   const full = `${emp.first || ""} ${emp.last || ""}`.trim() || "Highlight Industries";
+  const link = profileUrlFor(emp);
 
   const html = `
     <div class="card">
       <div class="share-grid">
         <div class="qrbox">
-          <img alt="QR code to HI Connect" src="${qrImgUrl(SHOPIFY_URL)}">
+          <img alt="QR code to HI Connect" src="${qrImgUrl(link)}">
         </div>
         <div class="share-actions">
           <div style="font-weight:900; font-size:18px;">${escapeHtml(full)}</div>
@@ -386,11 +387,11 @@ function openShareModal(emp) {
 
   els.modalBody?.querySelector('[data-action="copyLink"]')?.addEventListener("click", async () => {
     try {
-      await navigator.clipboard.writeText(SHOPIFY_URL);
+      await navigator.clipboard.writeText(link);
       toast("Copied!");
     } catch {
       const inp = document.createElement("input");
-      inp.value = SHOPIFY_URL;
+      inp.value = link;
       document.body.appendChild(inp);
       inp.select();
       document.execCommand("copy");
