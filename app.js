@@ -69,6 +69,10 @@ function buildMailHref(email) {
 function qrImgUrl(text) {
   return `https://quickchart.io/qr?text=${encodeURIComponent(text)}&size=220`;
 }
+function profileUrlFor(emp){
+  const id = encodeURIComponent(String(emp?.id || "").trim().toLowerCase());
+  return `${SHOPIFY_URL}?id=${id}`;
+}
 
 // ---- CSV parsing (handles quotes) ----
 function parseCsv(text) {
@@ -236,9 +240,8 @@ if (els.mobWebHit) {
   if (els.mobName) els.mobName.textContent = full;
   if (els.mobTitle) els.mobTitle.textContent = title;
 
-  // QR
-  const profileUrl = `${SHOPIFY_URL}?id=${encodeURIComponent(String(emp.id || "").trim().toLowerCase())}`;
-  if (els.mobQr) els.mobQr.src = qrImgUrl(profileUrl);
+   // QR
+  if (els.mobQr) els.mobQr.src = qrImgUrl(profileUrlFor(emp));
 
   // mobile green bar buttons (these are the ones you said must be wired)
   if (els.mobCall)  els.mobCall.href  = telHref;
@@ -317,7 +320,7 @@ async function nativeShare(emp) {
     emp.title || "",
     phoneDisp ? `Phone: ${phoneDisp}` : "",
     emp.email ? `Email: ${emp.email}` : "",
-    `Connect: ${SHOPIFY_URL}`,
+    `Connect: ${profileUrlFor(emp)}`,
   ].filter(Boolean).join("\n");
 
   if (navigator.share) {
@@ -325,7 +328,7 @@ async function nativeShare(emp) {
       await navigator.share({
         title: `HI | Connect — ${full}`,
         text,
-        url: SHOPIFY_URL,
+        url: profileUrlFor(emp),
       });
       return true;
     } catch {
