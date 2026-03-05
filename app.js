@@ -159,6 +159,10 @@ const els = {
   modal: $("#modal"),
   modalBody: $("#modalBody"),
   modalTitle: $("#modalTitle"),
+     // mobile mockup hit areas (3 buttons next to QR)
+  mobCallHit: $("#mobCallHit"),
+  mobEmailHit: $("#mobEmailHit"),
+  mobWebHit: $("#mobWebHit"),
 };
 
 function findEmployee(query) {
