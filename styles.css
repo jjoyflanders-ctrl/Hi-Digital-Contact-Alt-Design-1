@@ -635,3 +635,38 @@ a{ color: inherit; }
     z-index: 90 !important; /* above QR */
   }
 }
+/* Mobile mockup buttons next to QR (clickable hit areas) */
+@media (max-width: 899px){
+
+  /* make sure mob-mock is the positioning anchor */
+  .view--mobile .mob-mock{ position: relative !important; }
+
+  .view--mobile .mob-hit{
+    position: absolute !important;
+    display: block !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 14px !important;
+    z-index: 120 !important;      /* above artwork */
+    background: transparent !important; /* invisible */
+  }
+
+  /* Place them to the RIGHT of the QR circle */
+  .view--mobile .mob-hit--call{
+    left: calc(var(--qr-cx) + (var(--qr-size) / 2) + 16px) !important;
+    top:  calc(var(--qr-cy) - (var(--qr-size) / 2) + 6px) !important;
+  }
+
+  .view--mobile .mob-hit--email{
+    left: calc(var(--qr-cx) + (var(--qr-size) / 2) + 16px) !important;
+    top:  calc(var(--qr-cy) - (var(--qr-size) / 2) + 58px) !important;
+  }
+
+  .view--mobile .mob-hit--web{
+    left: calc(var(--qr-cx) + (var(--qr-size) / 2) + 16px) !important;
+    top:  calc(var(--qr-cy) - (var(--qr-size) / 2) + 110px) !important;
+  }
+
+  /* OPTIONAL: temporarily show hit areas for debugging */
+  /* .view--mobile .mob-hit{ outline: 2px solid rgba(255,0,0,.6) !important; } */
+}
