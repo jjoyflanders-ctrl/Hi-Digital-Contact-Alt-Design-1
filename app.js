@@ -71,7 +71,8 @@ function qrImgUrl(text) {
 }
 function profileUrlFor(emp){
   const id = encodeURIComponent(String(emp?.id || "").trim().toLowerCase());
-  return `${SHOPIFY_URL}?id=${id}`;
+  // Shopify may drop ?id=..., but it will NOT drop #id=...
+  return `${SHOPIFY_URL}?id=${id}#id=${id}`;
 }
 
 // ---- CSV parsing (handles quotes) ----
@@ -550,8 +551,8 @@ async function init() {
 
    // check if a QR code requested a specific employee
 const params = new URLSearchParams(window.location.search);
-const requestedId = normalize(params.get("id"));
-
+const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ""));
+const requestedId = normalize(params.get("id") || hashParams.get("id"));
 if (requestedId) {
   const match = EMPLOYEES.find(e => normalize(e.id) === requestedId);
   if (match) {
